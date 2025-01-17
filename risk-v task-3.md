@@ -87,5 +87,139 @@ Instruction Categories
 
 
 
+# 1.addi(I-type)
+- Instruction: addi a5, a5, 1
+- Binary: 0x00178793
+- Fields:
+  - opcode: 0010011
+  - rd: 01111 (a5)
+  - rs1: 01111 (a5)
+  - imm[11:0]: 000000000001
+# 2.or(R-type) 
+- Instruction: or a1, a1, a3
+- Binary: 0x00B5B633
+Fields:
+   - opcode: 0110011
+   - rd: 01011 (a1)
+   - rs1: 01011 (a1)
+   - rs2: 01101 (a3)
+   - funct3: 110
+# 3.add(R-type)
+- instruction add a5, a4, a5:
+- Binary: 0x00F78733
+Fields: 
+  - opcode: 0110011
+  - rd: 01111 (a5)
+  - rs1: 01110 (a4)
+  - rs2: 01111 (a5)
+  - funct3: 000
+# 4.lw(I-type)
+- instruction lw a2,-24(s0)
+- Binary: 0xFF443603
+Fields: 
+  - opcode: 0000011
+  - rd: 01100 (a2)
+  - rs1: 01000 (s0)
+  - imm[11:0]: 111111110100 (-24)
+# 5.jarl(u-Type)
+- instruction a5
+- Binary: 0x0000F067
+Fields: 
+  - opcode: 1100111
+  - rd: 01111 (a5)
+  - rs1: 00000 (zero)
+  - imm[11:0]: 000000000000
+# 6.BEQ (B-type)
+- instruction beq a0,zero,10
+- Binary: 0x00050863
+  - Fields:
+  - opcode: 1100011
+  - funct3: 000
+  - rs1: 01010 (a0)
+  - rs2: 00000 (zero)
+  - imm[12:1]: 000000001000
+# 7. SW (S-type)
+- instruction  sw a0,0(s1)
+- Binary: 0x00A4A023
+Fields:
+  - opcode: 0100011
+  - funct3: 010
+  - s1: 01001 (s1)
+  - rs2: 01010 (a0)
+  - imm[11:0]: 000000000000
+# 8.JAL (J-type)
+- instruction jal ra,800
+- Binary: 0x008000EF
+Fields:
+  - opcode: 1101111
+  - rd: 00001 (ra)
+  - imm[20:1]: 00000001000
+# 9.SUB (R-type)
+- instruction sub a0,a0,a1
+- Binary: 0x40B50533
+Fields:
+  - opcode: 0110011
+  - rd: 01010 (a0)
+  - rs1: 01010 (a0)
+  - rs2: 01011 (a1)
+  - funct7: 0100000
+# 10.mv(I-type)
+- Instruction: mv a0, a5 (encoded as addi a0, a5, 0)
+- Binary: 0x00078513
+Fields:
+  - opcode: 0010011
+  - rd: 01010 (a0)
+  - rs1: 01111 (a5)
+  - imm[11:0]: 000000000000 (0)
+# 11.blt(SB type)
+- Instruction: blt a1, a2, 16
+- Binary: 0x0085C463
+Fields:
+  - opcode: 1100011
+  - rs1: 01011 (a1)
+  - rs2: 01100 (a2)
+  - imm[12|10:5|4:1|11]: 000000001000 (offset = 16)
+# 12.s11(R-type)
+- Instruction: sll a2, a1, a0
+Fields:
+  - opcode: 0110011 (R-type)
+  - funct7: 0000000
+  - rs2: 01010 (a0)
+  - rs1: 01011 (a1)
+  - funct3: 001 (shift left logical)
+  - rd: 01100 (a2)
+  - 32-bit Representation: `0x00A5C
+# 13.lui(U-type)
+Instruction: lui a0, 0x1
+Fields:
+  - opcode: 0110111 (U-type)
+  - rd: 01010 (a0)
+  - imm[31:12]: 000000000001
+32-bit Representation: 0x00001537
+# 14.ltiu(I-type)
+- instruction ltiu a4, a1, 10
+Fields:
+  - opcode: 0010011 (I-type)
+  - rd: 01110 (a4)
+  - rs1: 01011 (a1)
+  - funct3: 011 (sltiu)
+  - imm[11:0]: 000000001010 (10)
+32-bit Representation: 0x00A5E593
+# 15.beq( SB-type)
+ - Instruction: beq a0, a1, 16
+Fields:
+  - opcode: 1100011 (SB-type)
+  - funct3: 000 (beq)
+  - rs1: 01010 (a0)
+  - rs2: 01011 (a1)
+  - imm[12|10:5|4:1|11]: 000000001000 (split for offset 16)
+  - 32-bit Representation: 0x00858663
+
+
+
+
+
+
+
 
 
